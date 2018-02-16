@@ -17,9 +17,8 @@ echo "La date d'aujourd'hui (Français): ".strftime("%A %d %B %Y");
 
 // exo4
 echo "<h2>Exo 4</h2>";
-$timing = $_SERVER["REQUEST_TIME"];
-$date = new DateTime("@$timing");
-echo $date->format('U = l j F Y H:i');
+$timestamp = time();
+echo date('l j F Y H:i', $timestamp);
 
 // exo5
 echo "<h2>Exo 5</h2>";
@@ -48,6 +47,7 @@ echo date("d-m-Y", strtotime($date. "+ 20 days"));
 echo "<h2>Exo 8</h2>";
 $date = date("d-m-Y");
 echo date("d-m-Y", strtotime($date. "- 22 days"));
+
 
 // TP
 echo "<h2>TP</h2>";
@@ -100,10 +100,8 @@ function build_calendar($month,$year,$dateArray) {
      while ($currentDay <= $numberDays) {
           // Seventh column (Saturday) reached. Start a new row.
           if ($dayOfWeek == 7) {
-
                $dayOfWeek = 0;
                $calendar .= "</tr><tr>";
-
           }
 
           $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT);
@@ -113,7 +111,6 @@ function build_calendar($month,$year,$dateArray) {
           // Increment counters
           $currentDay++;
           $dayOfWeek++;
-
      }
 
      // Complete the row of the last week in month, if necessary
